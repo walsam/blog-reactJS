@@ -6,10 +6,9 @@ import {Provider} from "react-redux";
 import {Switch,Route} from "react-router";
 import {ConnectedRouter} from "react-router-redux";
 import App from "./components/App";
+import reducer from "./reducer";
 
-const store = createStore(
-    state => state
-);
+const store = createStore(reducer);
 const history = createHistory();
 
 ReactDOM.render((
