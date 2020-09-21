@@ -23,9 +23,9 @@ class BlogPostListContainer extends React.Component {
     }
 
     render() {
-        return(
-            <BlogPostList posts={this.props.posts}/>
-        )
+        const {posts, isFetching} = this.props;
+
+        return (<BlogPostList posts={posts} isFetching={isFetching} />)
     }
 }
 
