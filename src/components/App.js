@@ -6,14 +6,14 @@ import Header from "./Header";
 import BlogPostContainer from "./BlogPostContainer";
 import {requests} from "../agent";
 import {connect} from "react-redux";
-import {userProfileFetch} from "../actions/actions";
+import {userProfileFetch, userSetId} from "../actions/actions";
 
 const mapStateToProps = state => ({
     ...state.auth
 });
 
 const mapDispatchToProps = {
-    userProfileFetch
+    userProfileFetch, userSetId
 };
 
 class App extends React.Component {
@@ -26,10 +26,19 @@ class App extends React.Component {
         }
     }
 
-    componentDidUpdate(prevProps) {
-        const {userId, userProfileFetch} = this.props;
+    componentDidMount() {
+        const userId = window.localStorage.getItem('userId');
+        const {userSetId} = this.props;
 
-        if (prevProps.userId !== userId && userId !== null) {
+        if (userId) {
+            userSetId(userId);
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        const {userId, userData, userProfileFetch} = this.props;
+
+        if (prevProps.userId !== userId && userId !== null && userData === null) {
             console.log(`Old user id ${prevProps.userId}`);
             console.log(`New user id ${userId}`);
             userProfileFetch(userId);
