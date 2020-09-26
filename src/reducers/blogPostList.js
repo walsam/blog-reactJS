@@ -4,6 +4,7 @@ import {
     BLOG_POST_LIST_RECEIVED,
     BLOG_POST_LIST_ERROR, BLOG_POST_LIST_SET_PAGE
 } from "../actions/constants";
+import {hydraPageCount} from "../apiUtils";
 
 export default (state= {
     posts: null,
@@ -23,6 +24,7 @@ export default (state= {
             state = {
                 ...state,
                 posts: action.data['hydra:member'],
+                pageCount: hydraPageCount(action.data),
                 isFetching: false
             };
             console.log(state);
