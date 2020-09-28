@@ -15,6 +15,7 @@ import {
     COMMENT_LIST_REQUEST,
     COMMENT_LIST_UNLOAD,
     IMAGE_DELETED,
+    IMAGE_DELETE_REQUEST,
     IMAGE_UPLOAD_ERROR,
     IMAGE_UPLOAD_REQUEST,
     IMAGE_UPLOADED,
@@ -293,6 +294,12 @@ export const imageUpload = (file) => {
         return requests.upload('/images', file)
             .then(response => dispatch(imageUploaded(response)))
             .catch(() => dispatch(imageUploadError))
+    }
+};
+
+export const imageDeleteRequest = () => {
+    return {
+        type: IMAGE_DELETE_REQUEST,
     }
 };
 
