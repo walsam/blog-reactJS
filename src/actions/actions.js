@@ -1,6 +1,7 @@
 import {requests} from "../agent";
 import {
-    BLOG_POST_ERROR,BLOG_POST_FORM_UNLOAD,
+    BLOG_POST_ERROR,
+    BLOG_POST_FORM_UNLOAD,
     BLOG_POST_LIST_ERROR,
     BLOG_POST_LIST_RECEIVED,
     BLOG_POST_LIST_REQUEST,
@@ -13,6 +14,7 @@ import {
     COMMENT_LIST_RECEIVED,
     COMMENT_LIST_REQUEST,
     COMMENT_LIST_UNLOAD,
+    IMAGE_DELETED,
     IMAGE_UPLOAD_ERROR,
     IMAGE_UPLOAD_REQUEST,
     IMAGE_UPLOADED,
@@ -291,5 +293,19 @@ export const imageUpload = (file) => {
         return requests.upload('/images', file)
             .then(response => dispatch(imageUploaded(response)))
             .catch(() => dispatch(imageUploadError))
+    }
+};
+
+export const imageDelete = (id) => {
+    return (dispatch) => {
+        return requests.delete(`/images/${id}`)
+            .then(() => dispatch(imageDeleted(id)));
+    }
+};
+
+export const imageDeleted = (id) => {
+    return {
+        type: IMAGE_DELETED,
+        imageId: id
     }
 };
