@@ -14,7 +14,9 @@ export class BlogPost extends React.Component {
             <div className="card mb-3 mt-3 shadow-sm">
                 <div className="card-body">
                     <h2>{post.title}</h2>
-                    <ImagesContainer images={post.images}/>
+                    <p>
+                        <ImagesContainer nbrImages="10" images={post.images}/>
+                    </p>
                     <p className="card-text">{post.content}</p>
                     <p className="card-text border-top">
                         <small className="text-muted">

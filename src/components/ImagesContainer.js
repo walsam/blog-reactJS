@@ -6,13 +6,14 @@ class ImagesContainer extends React.Component {
     render() {
         let showImage = true;
         const {images} = this.props;
+        const size = this.props.nbrImages;
         if(images.length < 1 || images == undefined){
             showImage = false;
         }
         return (
             <div className="partial-designer-canvas-crop">
                 <div>
-                    {showImage && images.map(image => (
+                    {showImage && images.slice(0, size).map(image => (
                         <img src={
                             "http://localhost:8000".concat(image.url)
                         } style={{

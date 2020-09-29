@@ -21,7 +21,7 @@ class BlogPostList extends React.Component {
                             <h3>
                                 <Link to={`/blog-post/${post.id}`}>{post.title}</Link>
                             </h3>
-                            <ImagesContainer images={post.images}/>
+                            <ImagesContainer nbrImages="1" images={post.images}/>
                             <p className="card-text bordet-top">
                                 <small className="text-muted">
                                     {timeago().format(post.published)}
