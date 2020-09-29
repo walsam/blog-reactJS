@@ -1,4 +1,6 @@
 import React from 'react';
+import {Link} from "react-router-dom";
+import timeago from "timeago.js";
 
 class ImagesContainer extends React.Component {
     render() {
@@ -10,16 +12,14 @@ class ImagesContainer extends React.Component {
         return (
             <div className="partial-designer-canvas-crop">
                 <div>
-                    {
-                        showImage &&
+                    {showImage && images.map(image => (
                         <img src={
-                            "http://localhost:8000".concat(images[0].url)
+                            "http://localhost:8000".concat(image.url)
                         } style={{
-                            maxWidth: "500px",
-                            maxHeight: "500px",
-                            transform: "scale(-50%, -50%)"
+                            maxWidth: "250px",
+                            maxHeight: "250px",
                         }} alt="image"></img>
-                    }
+                    ))}
                 </div>
             </div>
         );

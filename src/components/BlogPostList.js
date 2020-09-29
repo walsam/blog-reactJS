@@ -2,6 +2,7 @@ import React from 'react';
 import timeago from 'timeago.js';
 import {Link} from "react-router-dom";
 import {Message} from "./Message";
+import ImagesContainer from "./ImagesContainer";
 
 class BlogPostList extends React.Component {
 
@@ -20,6 +21,7 @@ class BlogPostList extends React.Component {
                             <h3>
                                 <Link to={`/blog-post/${post.id}`}>{post.title}</Link>
                             </h3>
+                            <ImagesContainer images={post.images}/>
                             <p className="card-text bordet-top">
                                 <small className="text-muted">
                                     {timeago().format(post.published)}
